@@ -3,25 +3,18 @@ import Image from "next/image";
 import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
+import Sidebar, { SidebarRow, SidebarSection } from "./sidebar";
+import ActiveLink from "./activelink";
 
 const name = "Oliver Le";
 export const siteTitle = "Oliver Le's Blog";
 
-export default function Layout({
-  children,
-  home,
-}: {
-  children: React.ReactNode;
-  home?: boolean;
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={styles.container}>
+    <div className={styles.default}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
+        <meta name="description" content="OL's Blog" />
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
@@ -31,45 +24,32 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt=""
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <Image
-                priority
-                src="/images/profile.jpg"
-                className={utilStyles.borderCircle}
-                height={108}
-                width={108}
-                alt=""
-              />
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/" className={utilStyles.colorInherit}>
-                {name}
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">← Back to home</Link>
-        </div>
-      )}
+      <Sidebar>
+        <SidebarSection title="">
+          <ActiveLink href="/">Home</ActiveLink>
+          <ActiveLink href="/blog">Blog</ActiveLink>
+          <ActiveLink href="/til">TIL</ActiveLink>
+        </SidebarSection>
+
+        <SidebarSection title="Projects">
+          <ActiveLink href="/projects/beans">Beans</ActiveLink>
+          <ActiveLink href="/projects/hidden">Hidden Bar</ActiveLink>
+          <ActiveLink href="/projects/sudofm">Sudo.fm</ActiveLink>
+        </SidebarSection>
+
+        <SidebarSection title="Contacts">
+          <ActiveLink href="https://twitter.com/phucledien" shouldShowNewTab>
+            Twitter
+          </ActiveLink>
+          <ActiveLink href="https://mastodon.social/@phucld" shouldShowNewTab>
+            Mastodon
+          </ActiveLink>
+          <ActiveLink href="https://github.com/phucledien" shouldShowNewTab>
+            Github
+          </ActiveLink>
+        </SidebarSection>
+      </Sidebar>
+      <main className={utilStyles.index}>{children}</main>
     </div>
   );
 }

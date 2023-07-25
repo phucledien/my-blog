@@ -1,0 +1,60 @@
+.navigationBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,.7);
+    z-index: 5;
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    overflow: hidden;
+    border-bottom: 1px solid #222;
+}
+  
+@media screen and (min-width: 1024px) {
+    .onlyMobile {
+        display: none;
+    }
+}
+
+.left, .right {
+    width: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    border: none;
+    outline: 0;
+    background-color: transparent;
+    color: #ccc;
+    color: var(--secondary);
+    line-height: 1em;
+    cursor: pointer;
+}
+
+.button, .default {
+    margin: 0;
+    padding: 0;
+}
+
+
+.title {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: .3s ease;
+    text-align: center;
+    line-height: 1.2em;
+    font-weight: 600;
+}
+
+.title.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+ 
