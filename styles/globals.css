@@ -23,6 +23,11 @@ main {
   width: 100%;
   padding-left: 176px;
 }
+@media screen and (max-width: 1024px) {
+  main {
+      padding: 0;
+  }
+}
 
 * {
   box-sizing: border-box;

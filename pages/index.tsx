@@ -1,14 +1,29 @@
 import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
+import Navbar, { menuIcon } from "../components/navbar";
+import { useContext, useState } from "react";
+import SidebarContext from "../context/SidebarContext";
 
 export default function Home() {
+  const { setIsShow } = useContext(SidebarContext);
+
   return (
-    <Layout>
+    <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <div className={utilStyles.container}>
+        <Navbar
+          title="Home"
+          isShowTitle
+          leadingItem={{
+            icon: menuIcon,
+            onClick: () => {
+              setIsShow(true);
+            },
+          }}
+        />
         <div className={`${utilStyles.mono} ${utilStyles.description}`}>
           👋 Xin chào, I'm Oliver. This is the place, where I would share the
           things I'm learning, projects I did and been working on, and maybe

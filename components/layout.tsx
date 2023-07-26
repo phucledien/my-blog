@@ -9,7 +9,13 @@ import ActiveLink from "./activelink";
 const name = "Oliver Le";
 export const siteTitle = "Oliver Le's Blog";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+  children,
+  home,
+}: {
+  children: React.ReactNode;
+  home?: boolean;
+}) {
   return (
     <div className={styles.default}>
       <Head>
@@ -49,7 +55,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </ActiveLink>
         </SidebarSection>
       </Sidebar>
-      <main className={utilStyles.index}>{children}</main>
+      <main className={home ? utilStyles.index : null}>{children}</main>
     </div>
   );
 }

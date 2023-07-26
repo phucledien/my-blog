@@ -7,8 +7,10 @@ import {
 } from "../../lib/posts";
 import utilStyles from "../../styles/utils.module.css";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Navbar from "../../components/navbar";
+import Navbar, { backIcon, menuIcon } from "../../components/navbar";
 import ActiveLink from "../../components/activelink";
+import React, { useState, useEffect, useContext } from "react";
+import SidebarContext from "../../context/SidebarContext";
 
 export default function Post({
   allPostsData,
@@ -25,6 +27,20 @@ export default function Post({
     contentHtml: string;
   };
 }) {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    const position = window.scrollY;
+    setScrollPosition(position);
+  };
+
   return (
     <Layout>
       <Head>
@@ -33,7 +49,7 @@ export default function Post({
       <div className={utilStyles.blog}>
         <aside className={utilStyles.aside}>
           <Navbar title="Blog" />
-          <div>
+          <div className={utilStyles.postsContainer}>
             <nav>
               {allPostsData.map(({ id, date, title }) => (
                 <div key={id}>
@@ -49,7 +65,16 @@ export default function Post({
           </div>
         </aside>
         <div className={utilStyles.postContainer}>
-          <Navbar title={postData.title} />
+          <Navbar
+            title={postData.title}
+            isShowTitle={scrollPosition >= 104}
+            leadingItem={{
+              icon: backIcon,
+              onClick: () => {
+                window.history.back();
+              },
+            }}
+          />
           <article className={utilStyles.articlePost}>
             <div className={utilStyles.container}>
               <header className={utilStyles.postHeader}>
