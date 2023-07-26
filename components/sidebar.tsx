@@ -1,8 +1,8 @@
 import Link from "next/link";
+import { useContext } from "react";
 import sidebarStyles from "./sidebar.module.css";
 import utilStyles from "../styles/utils.module.css";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
 import SidebarContext from "../context/SidebarContext";
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
