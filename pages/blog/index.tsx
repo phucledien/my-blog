@@ -2,7 +2,7 @@ import Head from "next/head";
 import { GetStaticProps } from "next";
 import Layout, { siteTitle } from "../../components/layout";
 import Navbar, { menuIcon } from "../../components/navbar";
-import { getSortedPostsData } from "../../lib/posts";
+import { getSortedBlogsData } from "../../lib/blogs";
 import utilStyles from "../../styles/utils.module.css";
 import ActiveLink from "../../components/activelink";
 import SidebarContext from "../../context/SidebarContext";
@@ -56,7 +56,7 @@ export default function Blog({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData();
+  const allPostsData = getSortedBlogsData();
   return {
     props: {
       allPostsData,

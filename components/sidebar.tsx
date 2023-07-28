@@ -55,25 +55,3 @@ export const SidebarSection = ({
     </section>
   );
 };
-
-export const SidebarRow = ({
-  title,
-  href,
-  shouldShowNewTab = false,
-}: {
-  title: string;
-  href: string;
-  shouldShowNewTab?: boolean;
-}) => {
-  const { asPath } = useRouter();
-  return (
-    <Link
-      className={sidebarStyles.sectionRow}
-      href={href}
-      target={shouldShowNewTab ? "_blank" : null}
-      aria-current={asPath === href ? "page" : null}
-    >
-      {title}
-    </Link>
-  );
-};

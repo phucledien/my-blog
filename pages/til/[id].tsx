@@ -1,10 +1,6 @@
 import Head from "next/head";
 import Layout from "../../components/layout";
-import {
-  getAllBlogIds,
-  getBlogData,
-  getSortedBlogsData,
-} from "../../lib/blogs";
+import { getAllTilIds, getTilData, getSortedTilsData } from "../../lib/tils";
 import utilStyles from "../../styles/utils.module.css";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Navbar, { backIcon } from "../../components/navbar";
@@ -97,7 +93,7 @@ export default function Post({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllBlogIds();
+  const paths = getAllTilIds();
   return {
     paths,
     fallback: false,
@@ -105,9 +101,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const allPostsData = getSortedBlogsData();
+  const allPostsData = getSortedTilsData();
   const id = typeof params.id === "string" ? params.id : params.id[0] || "";
-  const postData = await getBlogData(id);
+  const postData = await getTilData(id);
   return {
     props: {
       allPostsData,
