@@ -1,4 +1,3 @@
-
 ---
 title: "Don't trust default timeouts"
 date: "2024-12-25"
