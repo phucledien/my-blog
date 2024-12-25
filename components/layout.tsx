@@ -28,11 +28,9 @@ export default function Layout({
           <ActiveLink href="/til">TIL</ActiveLink>
         </SidebarSection>
 
-        {/* <SidebarSection title="Projects">
-          <ActiveLink href="/projects/beans">Beans</ActiveLink>
+        <SidebarSection title="Projects">
           <ActiveLink href="/projects/hidden">Hidden Bar</ActiveLink>
-          <ActiveLink href="/projects/sudofm">Sudo.fm</ActiveLink>
-        </SidebarSection> */}
+        </SidebarSection>
 
         <SidebarSection title="Contacts">
           <ActiveLink href="https://twitter.com/phucledien" shouldShowNewTab>
