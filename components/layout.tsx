@@ -1,10 +1,7 @@
-import Head from "next/head";
-import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Sidebar, { SidebarSection } from "./sidebar";
 import ActiveLink from "./activelink";
-
-export const siteTitle = "Oliver.Le";
+import { projects } from "../data/projects";
 
 export default function Layout({
   children,
@@ -14,37 +11,36 @@ export default function Layout({
   home?: boolean;
 }) {
   return (
-    <div className={styles.default}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="Oliver.Le" />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+    <div className={utilStyles.default}>
       <Sidebar>
-        <SidebarSection title="">
+        <SidebarSection>
           <ActiveLink href="/">Home</ActiveLink>
           <ActiveLink href="/blog">Blog</ActiveLink>
           <ActiveLink href="/til">TIL</ActiveLink>
+          <ActiveLink href="/projects">Projects</ActiveLink>
         </SidebarSection>
 
         <SidebarSection title="Projects">
-          <ActiveLink href="/projects/hidden">Hidden Bar</ActiveLink>
+          {projects.map(({ id, title }) => (
+            <ActiveLink key={id} href={`/projects/${id}`}>
+              {title}
+            </ActiveLink>
+          ))}
         </SidebarSection>
 
         <SidebarSection title="Contacts">
-          <ActiveLink href="https://twitter.com/phucledien" shouldShowNewTab>
+          <ActiveLink href="https://twitter.com/phucledien" external>
             Twitter
           </ActiveLink>
-          <ActiveLink href="https://mastodon.social/@phucld" shouldShowNewTab>
+          <ActiveLink href="https://mastodon.social/@phucld" external>
             Mastodon
           </ActiveLink>
-          <ActiveLink href="https://github.com/phucledien" shouldShowNewTab>
+          <ActiveLink href="https://github.com/phucledien" external>
             Github
           </ActiveLink>
         </SidebarSection>
       </Sidebar>
-      <main className={home ? utilStyles.index : null}>{children}</main>
+      <main className={home ? utilStyles.index : undefined}>{children}</main>
     </div>
   );
 }

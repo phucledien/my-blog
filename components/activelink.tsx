@@ -1,35 +1,43 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
 import utilStyles from "../styles/utils.module.css";
+
+// A link is active on its own page and on any page nested under it,
+// e.g. "/til" stays highlighted on "/til/some-post".
+function isActive(asPath: string, href: string): boolean {
+  const path = asPath.split(/[?#]/)[0];
+  return path === href || (href !== "/" && path.startsWith(`${href}/`));
+}
 
 export default function ActiveLink({
   children,
   href,
-  shouldShowNewTab = false,
+  external = false,
 }: {
   children: React.ReactNode;
   href: string;
-  shouldShowNewTab?: boolean;
+  external?: boolean;
 }) {
-  const { asPath, pathname } = useRouter();
+  const { asPath } = useRouter();
 
-  // TODO: Refactor this for dynamic routes
-  function isActive(asPath: string, pathname: string, href: string): boolean {
-    if (asPath === href) {
-      return true;
-    }
-    if (pathname === "/blog/[id]" && href === "/blog") {
-      return true;
-    }
-    return false;
+  if (external) {
+    return (
+      <a
+        className={utilStyles.activeLink}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </a>
+    );
   }
+
   return (
     <Link
       className={utilStyles.activeLink}
       href={href}
-      target={shouldShowNewTab ? "_blank" : null}
-      aria-current={isActive(asPath, pathname, href) ? "page" : null}
+      aria-current={isActive(asPath, href) ? "page" : undefined}
     >
       {children}
     </Link>

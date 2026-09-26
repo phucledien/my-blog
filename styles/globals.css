@@ -21,11 +21,13 @@ body {
 
 main {
   width: 100%;
+  min-width: 0;
   padding-left: 176px;
 }
+
 @media screen and (max-width: 1024px) {
   main {
-      padding: 0;
+    padding: 0;
   }
 }
 
@@ -36,10 +38,10 @@ main {
 a {
   color: var(--primary);
   text-decoration: none;
+}
 
-  &[aria-current] {
-    background-color: #222;
-  }
+a[aria-current] {
+  background-color: #222;
 }
 
 a:hover {

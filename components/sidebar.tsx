@@ -1,9 +1,8 @@
-import Link from "next/link";
 import { useContext } from "react";
 import sidebarStyles from "./sidebar.module.css";
 import utilStyles from "../styles/utils.module.css";
-import { useRouter } from "next/router";
 import SidebarContext from "../context/SidebarContext";
+import { SITE_NAME } from "../lib/site";
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   const { isShow, setIsShow } = useContext(SidebarContext);
@@ -13,10 +12,11 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
       className={`${sidebarStyles.sidebar} ${isShow ? sidebarStyles.show : ""}`}
     >
       <header className={sidebarStyles.header}>
-        Oliver.Le{" "}
+        {SITE_NAME}
         <button
           className={`${utilStyles.button} ${utilStyles.onlyMobile}`}
           onClick={() => setIsShow(false)}
+          aria-label="Close menu"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -39,19 +39,17 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
   );
 }
 
-export const SidebarSection = ({
+export function SidebarSection({
   title,
   children,
 }: {
-  title: string;
+  title?: string;
   children: React.ReactNode;
-}) => {
+}) {
   return (
     <section className={sidebarStyles.section}>
-      {title.length !== 0 && (
-        <h4 className={sidebarStyles.sectionTitle}>{title}</h4>
-      )}
+      {title && <h4 className={sidebarStyles.sectionTitle}>{title}</h4>}
       {children}
     </section>
   );
-};
+}

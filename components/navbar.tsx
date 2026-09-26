@@ -1,5 +1,8 @@
 import navbarStyles from "./navbar.module.css";
-import utilStyles from "../styles//utils.module.css";
+import utilStyles from "../styles/utils.module.css";
+import { useRouter } from "next/router";
+import { useSidebar } from "../context/SidebarContext";
+import { useScrolledPast } from "../hooks/useScrolledPast";
 
 export default function Navbar({
   title,
@@ -10,6 +13,7 @@ export default function Navbar({
   isShowTitle?: boolean;
   leadingItem?: {
     icon: React.ReactNode;
+    label: string;
     onClick: () => void;
   };
 }) {
@@ -17,7 +21,11 @@ export default function Navbar({
     <nav className={`${navbarStyles.navigationBar} ${utilStyles.onlyMobile}`}>
       <div className={navbarStyles.left}>
         {leadingItem && (
-          <button className={utilStyles.button} onClick={leadingItem.onClick}>
+          <button
+            className={utilStyles.button}
+            onClick={leadingItem.onClick}
+            aria-label={leadingItem.label}
+          >
             {leadingItem.icon}
           </button>
         )}
@@ -67,3 +75,36 @@ export const backIcon = (
     ></path>
   </svg>
 );
+
+// Mobile navbar whose leading button opens the sidebar menu.
+export function MenuNavbar({ title }: { title: string }) {
+  const { setIsShow } = useSidebar();
+  return (
+    <Navbar
+      title={title}
+      isShowTitle
+      leadingItem={{
+        icon: menuIcon,
+        label: "Open menu",
+        onClick: () => setIsShow(true),
+      }}
+    />
+  );
+}
+
+// Mobile navbar for detail pages; the title fades in once the page header scrolls away.
+export function BackNavbar({ title, backHref }: { title: string; backHref: string }) {
+  const router = useRouter();
+  const isScrolled = useScrolledPast(104);
+  return (
+    <Navbar
+      title={title}
+      isShowTitle={isScrolled}
+      leadingItem={{
+        icon: backIcon,
+        label: "Back",
+        onClick: () => router.push(backHref),
+      }}
+    />
+  );
+}

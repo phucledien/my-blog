@@ -1,117 +1,39 @@
-import Head from "next/head";
+import type { GetStaticPaths, GetStaticProps } from "next";
 import Layout from "../../components/layout";
-import {
-  getAllBlogIds,
-  getBlogData,
-  getSortedBlogsData,
-} from "../../lib/blogs";
+import Seo from "../../components/seo";
+import { PostArticle, PostList, sectionTitles } from "../../components/posts";
+import { getPost, getPostIds, getSortedPosts, type Post, type PostMeta } from "../../lib/posts";
 import utilStyles from "../../styles/utils.module.css";
-import { GetStaticPaths, GetStaticProps } from "next";
-import Navbar, { backIcon } from "../../components/navbar";
-import ActiveLink from "../../components/activelink";
-import React, { useState, useEffect } from "react";
 
-export default function Post({
-  allPostsData,
-  postData,
-}: {
-  allPostsData: {
-    date: string;
-    title: string;
-    id: string;
-  }[];
-  postData: {
-    title: string;
-    date: string;
-    contentHtml: string;
-  };
-}) {
-  const [scrollPosition, setScrollPosition] = useState(0);
+type Props = { posts: PostMeta[]; post: Post };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const handleScroll = () => {
-    const position = window.scrollY;
-    setScrollPosition(position);
-  };
-
+export default function PostPage({ posts, post }: Props) {
   return (
     <Layout>
-      <Head>
-        <title>{postData.title}</title>
-      </Head>
+      <Seo
+        title={post.title}
+        description={post.description}
+        path={`/blog/${post.id}`}
+        label={sectionTitles.blog}
+        type="article"
+        publishedTime={post.date}
+      />
       <div className={utilStyles.blog}>
-        <aside className={utilStyles.aside}>
-          <Navbar title="Blog" />
-          <div className={utilStyles.postsContainer}>
-            <nav>
-              {allPostsData.map(({ id, date, title }) => (
-                <div key={id}>
-                  <ActiveLink href={`/blog/${id}`}>
-                    <div className={utilStyles.post}>
-                      <div className={utilStyles.title}>{title}</div>
-                      <span className={utilStyles.date}>{date}</span>
-                    </div>
-                  </ActiveLink>
-                </div>
-              ))}
-            </nav>
-          </div>
-        </aside>
-        <div className={utilStyles.postContainer}>
-          <Navbar
-            title={postData.title}
-            isShowTitle={scrollPosition >= 104}
-            leadingItem={{
-              icon: backIcon,
-              onClick: () => {
-                window.history.back();
-              },
-            }}
-          />
-          <article className={utilStyles.articlePost}>
-            <div className={utilStyles.container}>
-              <header className={utilStyles.postHeader}>
-                <h1 className={utilStyles.postTitle}>{postData.title}</h1>
-                <div className={utilStyles.meta}>
-                  <time className={utilStyles.postSubheader}>
-                    {postData.date}
-                  </time>
-                </div>
-              </header>
-              <div
-                className={`${utilStyles.content} ${utilStyles.mono}`}
-                dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-              ></div>
-            </div>
-          </article>
-        </div>
+        <PostList section="blog" posts={posts} />
+        <PostArticle section="blog" post={post} />
       </div>
     </Layout>
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllBlogIds();
-  return {
-    paths,
-    fallback: false,
-  };
-};
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: getPostIds("blog").map((id) => ({ params: { id } })),
+  fallback: false,
+});
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const allPostsData = getSortedBlogsData();
-  const id = typeof params.id === "string" ? params.id : params.id[0] || "";
-  const postData = await getBlogData(id);
-  return {
-    props: {
-      allPostsData,
-      postData,
-    },
-  };
-};
+export const getStaticProps: GetStaticProps<Props, { id: string }> = async ({ params }) => ({
+  props: {
+    posts: getSortedPosts("blog"),
+    post: await getPost("blog", params!.id),
+  },
+});

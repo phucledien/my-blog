@@ -1,65 +1,23 @@
-import Head from "next/head";
-import { GetStaticProps } from "next";
-import Layout, { siteTitle } from "../../components/layout";
-import Navbar, { menuIcon } from "../../components/navbar";
-import { getSortedTilsData } from "../../lib/tils";
+import type { GetStaticProps } from "next";
+import Layout from "../../components/layout";
+import Seo from "../../components/seo";
+import { PostList, sectionTitles } from "../../components/posts";
+import { getSortedPosts, type PostMeta } from "../../lib/posts";
 import utilStyles from "../../styles/utils.module.css";
-import ActiveLink from "../../components/activelink";
-import SidebarContext from "../../context/SidebarContext";
-import { useContext } from "react";
 
-export default function TIL({
-  allPostsData,
-}: {
-  allPostsData: {
-    date: string;
-    title: string;
-    id: string;
-  }[];
-}) {
-  const { setIsShow: setIsShowSidebar } = useContext(SidebarContext);
+type Props = { posts: PostMeta[] };
+
+export default function SectionIndex({ posts }: Props) {
   return (
     <Layout>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
+      <Seo title={sectionTitles.til} description="Today I learned: short notes on small things worth remembering." path="/til" />
       <div className={utilStyles.blog}>
-        <aside className={`${utilStyles.aside} ${utilStyles.show}`}>
-          <Navbar
-            title="TIL"
-            isShowTitle
-            leadingItem={{
-              icon: menuIcon,
-              onClick: () => {
-                setIsShowSidebar(true);
-              },
-            }}
-          />
-          <div className={utilStyles.postsContainer}>
-            <nav>
-              {allPostsData.map(({ id, date, title }) => (
-                <div key={id}>
-                  <ActiveLink href={`/til/${id}`}>
-                    <div className={utilStyles.post}>
-                      <div className={utilStyles.title}>{title}</div>
-                      <span className={utilStyles.date}>{date}</span>
-                    </div>
-                  </ActiveLink>
-                </div>
-              ))}
-            </nav>
-          </div>
-        </aside>
+        <PostList section="til" posts={posts} isIndex />
       </div>
     </Layout>
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedTilsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-};
+export const getStaticProps: GetStaticProps<Props> = async () => ({
+  props: { posts: getSortedPosts("til") },
+});
