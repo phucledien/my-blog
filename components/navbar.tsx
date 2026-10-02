@@ -8,9 +8,11 @@ export default function Navbar({
   title,
   isShowTitle,
   leadingItem,
+  isMenuOpen,
 }: {
   title: string;
   isShowTitle?: boolean;
+  isMenuOpen?: boolean;
   leadingItem?: {
     icon: React.ReactNode;
     label: string;
@@ -22,9 +24,11 @@ export default function Navbar({
       <div className={navbarStyles.left}>
         {leadingItem && (
           <button
-            className={utilStyles.button}
+            className={`${utilStyles.button} ${navbarStyles.leadingButton}`}
             onClick={leadingItem.onClick}
             aria-label={leadingItem.label}
+            aria-expanded={isMenuOpen}
+            aria-controls={isMenuOpen !== undefined ? "site-menu" : undefined}
           >
             {leadingItem.icon}
           </button>
@@ -85,11 +89,12 @@ export function MenuNavbar({
   title: string;
   isShowTitle?: boolean;
 }) {
-  const { setIsShow } = useSidebar();
+  const { isShow, setIsShow } = useSidebar();
   return (
     <Navbar
       title={title}
       isShowTitle={isShowTitle}
+      isMenuOpen={isShow}
       leadingItem={{
         icon: menuIcon,
         label: "Open menu",

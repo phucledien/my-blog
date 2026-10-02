@@ -1,5 +1,5 @@
 import utilStyles from "../styles/utils.module.css";
-import Sidebar, { SidebarSection } from "./sidebar";
+import Sidebar, { SidebarBackdrop, SidebarSection } from "./sidebar";
 import ActiveLink from "./activelink";
 import { projects } from "../data/projects";
 
@@ -41,7 +41,10 @@ export default function Layout({
         </SidebarSection>
       </Sidebar>
       <div className={utilStyles.default}>
-        <main className={home ? utilStyles.index : undefined}>{children}</main>
+        <SidebarBackdrop />
+        <main data-sidebar-content className={home ? utilStyles.index : undefined}>
+          {children}
+        </main>
       </div>
     </>
   );
