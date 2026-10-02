@@ -190,7 +190,7 @@
   align-items: flex-start;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
     .onlyMobile {
         display: none!important;
     }

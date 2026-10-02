@@ -45,7 +45,8 @@ export default function ProjectPage({ id }: Props) {
           <p className={styles.heroTagline}>{project.tagline}</p>
           <div className={utilStyles.meta}>
             <span>
-              {project.year} · {project.role}
+              {project.year && `${project.year} · `}
+              {project.role}
             </span>
           </div>
           <div className={styles.actions}>
@@ -56,17 +57,19 @@ export default function ProjectPage({ id }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Visit ↗
+                {project.homepageLabel ?? "Visit"} ↗
               </a>
             )}
-            <a
-              className={styles.button}
-              href={project.repo}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Source on GitHub ↗
-            </a>
+            {project.repo && (
+              <a
+                className={styles.button}
+                href={project.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Source on GitHub ↗
+              </a>
+            )}
           </div>
         </header>
 
@@ -106,12 +109,16 @@ export default function ProjectPage({ id }: Props) {
             ))}
           </ul>
 
-          <h2 className={styles.sectionTitle}>Stack</h2>
-          <ul className={styles.tags}>
-            {project.stack.map((tech) => (
-              <li key={tech}>{tech}</li>
-            ))}
-          </ul>
+          {project.stack.length > 0 && (
+            <>
+              <h2 className={styles.sectionTitle}>Stack</h2>
+              <ul className={styles.tags}>
+                {project.stack.map((tech) => (
+                  <li key={tech}>{tech}</li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
 
         {project.gallery.length > 0 && (

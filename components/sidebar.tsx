@@ -9,6 +9,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
 
   return (
     <nav
+      aria-label="Main navigation"
       className={`${sidebarStyles.sidebar} ${isShow ? sidebarStyles.show : ""}`}
     >
       <header className={sidebarStyles.header}>

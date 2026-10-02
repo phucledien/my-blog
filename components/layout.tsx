@@ -11,7 +11,7 @@ export default function Layout({
   home?: boolean;
 }) {
   return (
-    <div className={utilStyles.default}>
+    <>
       <Sidebar>
         <SidebarSection>
           <ActiveLink href="/">Home</ActiveLink>
@@ -40,7 +40,9 @@ export default function Layout({
           </ActiveLink>
         </SidebarSection>
       </Sidebar>
-      <main className={home ? utilStyles.index : undefined}>{children}</main>
-    </div>
+      <div className={utilStyles.default}>
+        <main className={home ? utilStyles.index : undefined}>{children}</main>
+      </div>
+    </>
   );
 }

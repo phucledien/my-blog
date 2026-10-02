@@ -3,11 +3,17 @@
     position: fixed;
     top: 0;
     bottom: 0;
+    left: 0;
+    height: 100vh;
+    height: 100dvh;
     width: 176px;
     border-right: 1px solid #666;
     background-color: var(--background);
     flex-shrink: 0;
     overflow-y: auto;
+    overscroll-behavior-y: contain;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
     z-index: 10;
 }
 

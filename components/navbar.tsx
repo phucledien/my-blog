@@ -31,6 +31,7 @@ export default function Navbar({
         )}
       </div>
       <div
+        aria-hidden={!isShowTitle}
         className={`${navbarStyles.title} ${
           isShowTitle ? navbarStyles.show : ""
         }`}
@@ -77,12 +78,18 @@ export const backIcon = (
 );
 
 // Mobile navbar whose leading button opens the sidebar menu.
-export function MenuNavbar({ title }: { title: string }) {
+export function MenuNavbar({
+  title,
+  isShowTitle = true,
+}: {
+  title: string;
+  isShowTitle?: boolean;
+}) {
   const { setIsShow } = useSidebar();
   return (
     <Navbar
       title={title}
-      isShowTitle
+      isShowTitle={isShowTitle}
       leadingItem={{
         icon: menuIcon,
         label: "Open menu",
