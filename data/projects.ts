@@ -1,5 +1,7 @@
 import type { StaticImageData } from "next/image";
 
+import stackbackIcon from "../assets/projects/stackback/icon.png";
+
 import hiddenIcon from "../assets/projects/hidden/icon.png";
 import hiddenScreen1 from "../assets/projects/hidden/screen1.webp";
 import hiddenTutorial from "../assets/projects/hidden/tutorial.gif";
@@ -55,6 +57,34 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "stackback",
+    title: "Stackback",
+    tagline: "Solve a new sum while remembering an earlier answer.",
+    year: "2026",
+    role: "Creator",
+    stack: ["Godot", "GDScript", "iOS"],
+    homepage: "/projects/stackback/support",
+    homepageLabel: "Get support",
+    icon: stackbackIcon,
+    cover: {
+      src: stackbackIcon,
+      alt: "Stackback app icon",
+    },
+    coverFit: "contain",
+    intro: [
+      "Stackback combines arithmetic with an N-back memory challenge: solve each card, remember its answer, then answer the card from N turns ago.",
+      "Choose a 2- or 5-minute Daily Training session or climb through increasingly demanding floors. Write answers with your finger or use the keypad. Core play and handwriting recognition work on your device.",
+      "Optional Game Center leaderboards let you compare eligible Climb scores. Purchases, Plus and rewarded advertising are planned for a future release; the current TestFlight release has no active purchases or ads.",
+    ],
+    highlights: [
+      "Short Daily Training sessions and endless Climb",
+      "On-device handwriting recognition with a keypad alternative",
+      "Offline core play with local progress and inventory",
+      "Open and Fair Climb with optional Game Center leaderboards",
+    ],
+    gallery: [],
+  },
   {
     id: "saigon-town",
     title: "Saigon Town",
