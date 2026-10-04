@@ -19,7 +19,7 @@ export default function StackbackPolicyLayout({ title, description, path, childr
         <header>
           <Link href="/projects/stackback" className={styles.back}>← Stackback</Link>
           <h1>{title}</h1>
-          <p className={styles.date}>Updated October 3, 2026</p>
+          <p className={styles.date}>Updated October 4, 2026</p>
         </header>
         <div className={styles.content}>{children}</div>
         <footer className={styles.footer}>

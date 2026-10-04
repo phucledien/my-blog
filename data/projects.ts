@@ -75,7 +75,7 @@ export const projects: Project[] = [
     intro: [
       "Stackback combines arithmetic with an N-back memory challenge: solve each card, remember its answer, then answer the card from N turns ago.",
       "Choose a 2- or 5-minute Daily Training session or climb through increasingly demanding floors. Write answers with your finger or use the keypad. Core play and handwriting recognition work on your device.",
-      "Optional Game Center leaderboards let you compare eligible Climb scores. Purchases, Plus and rewarded advertising are planned for a future release; the current TestFlight release has no active purchases or ads.",
+      "Optional Game Center leaderboards let you compare eligible Climb scores. TestFlight beta 0.5.0 (202610041156) includes sandbox purchases and optional adult-only Google sample ads. Production billing and advertising remain disabled.",
     ],
     highlights: [
       "Short Daily Training sessions and endless Climb",
