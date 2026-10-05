@@ -1,0 +1,34 @@
+import TiltClubPolicyLayout from "../../../components/tilt-club-policy-layout";
+
+export default function Privacy() {
+  return <TiltClubPolicyLayout title="Privacy policy" description="Tilt Club local game records, purchase data, age answers and planned optional rewarded-ad privacy practices." path="/projects/tilt-club/privacy">
+    <p className="lead">Tilt Club is simulated poker played on your device against computer-controlled characters. This policy explains its local records and the purchase and ad services planned for its native TestFlight beta.</p>
+    <p>Developer: Phuc Le. For privacy questions or requests concerning information sent directly to support, email <a href="mailto:phucledien@gmail.com?subject=Tilt%20Club%20privacy">phucledien@gmail.com</a>.</p>
+    <h2>Game records on your device</h2>
+    <p>The native app stores nights played, wins, game history and statistics, daily reward progress, Club Ticket balances, owned item copies, unlocked and equipped card and table styles, purchase ownership and settings. These records support game progress, rewards and inventory.</p>
+    <p>The native app does not provide a Tilt Club account or its own cloud synchronization of progress or wallets. It does not import the browser prototype’s save into the native app.</p>
+    <h2>Age answer and eligibility</h2>
+    <p>Tilt Club is adult-oriented simulated poker. The prepared purchase and rewarded-ad features require the player’s explicit answer that they are 18 or older. The neutral question allows Yes, No or Not now. The answer and time of the answer are stored locally; no date of birth is requested.</p>
+    <p>The answer starts as unknown. Under-18 and unknown answers block new purchase initiation and new rewarded-ad requests. The app does not start the advertising setup flow without an 18-or-older answer. Google’s privacy-options form can remain available to revise choices previously made. Apple can still provide product information and verified purchase records, including existing ownership.</p>
+    <p>Settings → Purchases &amp; ads lets you change or withdraw the answer. WITHDRAW returns it to unknown and stops purchase initiation and ad eligibility. Resetting the game save also clears the age answer. An App Store rating or a previous purchase is not used as proof of age.</p>
+    <h2>Planned Apple sandbox purchases</h2>
+    <p className="notice">The purchase and rewarded-ad features are being prepared for a future Tilt Club TestFlight beta. The planned beta uses Apple sandbox purchases and Google’s official sample ads. Rewarded ads remain disabled pending Tilt-specific privacy and consent setup. Production advertising is not enabled.</p>
+    <p>Apple handles purchase-account and transaction information. Tilt Club uses verified transaction and product identifiers, purchase time, quantity, ownership and revocation information to deliver benefits, recognize ownership and avoid duplicate grants. The app does not receive payment-card details. Sandbox transactions do not incur real billing. See <a href="https://www.apple.com/legal/privacy/data/en/app-store/">App Store &amp; Privacy</a>.</p>
+    <p>A local purchase journal and profile records retain delivery status and entitlement information. These records survive RESET SAVE so consumed purchases cannot be delivered again and verified non-consumable ownership can be retained. Restore Purchases uses Apple’s records; it does not rebuild a lost Ticket wallet.</p>
+    <h2>Planned optional sample ads</h2>
+    <p>The only planned rewarded-ad placement is an optional rebuy after busting, available once per night before level 5. The beta is configured to request only Google’s official sample rewarded-ad unit. Full Club ownership removes the ad requirement for this eligible rebuy.</p>
+    <p>When enabled for a player who answered 18 or older, the integration asks Google’s User Messaging Platform for current privacy information and presents required forms before requesting an ad. This privacy update can occur at launch even if the player does not choose a rebuy. Full Club ownership does not change the local age answer or Google’s privacy choices.</p>
+    <p>Google’s advertising and consent services may process IP addresses and approximate location, device or app identifiers, ad and app interactions, performance information, crash diagnostics and privacy choices. The privacy forms identify participating advertising partners, purposes and applicable legal bases. Sample ads can still involve this data processing. See <a href="https://policies.google.com/privacy">Google’s Privacy Policy</a> and <a href="https://developers.google.com/admob/ios/privacy/data-disclosure">Google’s mobile ads data disclosures</a>.</p>
+    <p>The reviewed app integration does not request Apple’s App Tracking Transparency permission. This statement describes the app’s permission request; Google’s data practices are described above.</p>
+    <p>Where Google requires a privacy entry point, AD PRIVACY OPTIONS in Settings reopens its form to manage the available consent and privacy choices. Ad requests depend on Google’s permission-to-request result. Changing choices in that form does not withdraw the app’s local age answer. Use WITHDRAW under Purchases &amp; ads to stop the app’s ad eligibility and new purchase initiation.</p>
+    <p>Withdrawing an age answer or resetting a local save does not erase records already held by Apple, Google or participating partners. Their privacy policies and controls govern their records.</p>
+    <h2>Reset, retention and removal</h2>
+    <p>Local game records remain until changed, reset or removed. RESET SAVE clears progress, Tickets, item copies, unlocks, statistics, settings and the age answer, while preserving purchase-delivery and ownership records. Removing the app can remove its local data; device backups and Apple-managed records follow Apple’s settings.</p>
+    <h2>Email support</h2>
+    <p>If you email support, the recipient receives your email address, message and attachments. This information is used to respond and investigate the reported issue. Send only what is needed for support. You can request deletion of information you sent directly to support at the email address above.</p>
+    <h2>This website</h2>
+    <p>Vercel hosts these pages and processes technical website-traffic information such as IP addresses and request or device information to operate the website. See <a href="https://vercel.com/legal/privacy-notice">Vercel’s Privacy Notice</a>. Tilt Club’s local progress and Ticket wallet are not uploaded to this website.</p>
+    <h2>Policy updates</h2>
+    <p>This policy will be updated as Tilt Club’s enabled features and data practices change. The date above identifies the latest update.</p>
+  </TiltClubPolicyLayout>;
+}

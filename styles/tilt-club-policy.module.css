@@ -1,0 +1,17 @@
+.page{width:100%;max-width:900px;margin:0 auto;padding:104px 48px 64px;font-size:17px;line-height:1.7;color:var(--secondary)}
+.page *{box-sizing:border-box}
+.page h1{font-size:clamp(32px,5vw,46px);line-height:1.15;letter-spacing:-.03em;margin:8px 0 12px;color:var(--primary)}
+.page h2{font-size:24px;line-height:1.3;margin:36px 0 12px;color:var(--primary)}
+.page p,.page ul{margin:0 0 18px}
+.page ul{padding-left:24px}.page li{margin-bottom:10px}
+.page a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.page a:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+.page strong{background-image:none;font-weight:700;color:var(--primary)}
+.back{font-size:15px}.appName{margin:24px 0 0!important;font-size:18px;color:var(--primary)}
+.date{font-size:14px;color:var(--tertiary)}
+.content{margin-top:32px;overflow-wrap:anywhere}
+.content :global(.lead){font-size:20px;color:var(--primary)}
+.content :global(.notice){padding:16px 20px;background:#111;border-left:3px solid #c8a669;border-radius:4px;font-size:15px}
+.footer{margin-top:48px;padding-top:24px;border-top:1px solid #333;font-size:15px}
+.footer nav{display:flex;flex-wrap:wrap;gap:12px 24px;margin-bottom:18px}
+@media(max-width:1024px){.page{padding:80px 16px 48px}}
