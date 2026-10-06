@@ -1,4 +1,9 @@
 import type { StaticImageData } from "next/image";
+import quaxelIcon from "../assets/projects/quaxel/icon.png";
+import quaxelCover from "../assets/projects/quaxel/cover.png";
+import quaxelPixel from "../assets/projects/quaxel/pixel.png";
+import quaxelSound from "../assets/projects/quaxel/sound.png";
+import quaxelScene from "../assets/projects/quaxel/scene.png";
 
 import stackbackIcon from "../assets/projects/stackback/icon.png";
 
@@ -57,6 +62,36 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "quaxel",
+    title: "Quaxel",
+    tagline: "Draw it. Score it. Scene it.",
+    year: "2026",
+    role: "Creator",
+    stack: ["Swift", "SwiftUI", "StoreKit", "iPhone & iPad"],
+    homepage: "/projects/quaxel/support",
+    homepageLabel: "Support & privacy",
+    icon: quaxelIcon,
+    cover: { src: quaxelCover, alt: "Quaxel scene editor with a pixel beach, ducks, and layers" },
+    coverFit: "contain",
+    intro: [
+      "A tiny studio for pixel-art worlds that move to music. Draw a sprite, write the soundtrack, and build a living scene where the waves break on the beat, all in one app and one project file.",
+      "Made for iPhone and iPad, with Apple Pencil support. Your .quaxel documents stay in Files or iCloud Drive. No account, tracking, or ads.",
+      "Free includes the pixel, sound, and scene editors, animation, palettes, and the Beach recipe. Quaxel Pro adds video export, every scene recipe, unlimited sprites, and alternate app icons through a subscription or a lifetime purchase.",
+    ],
+    highlights: [
+      "Draw and animate sprites in four directions, with onion skin and color palettes",
+      "Write a soundtrack with a step sequencer, piano roll, and editable instruments",
+      "Build scenes from layers and animate properties in time with the song",
+      "Play full screen or export a 1080×1920 video with audio using Quaxel Pro",
+      "Keep your work in portable project files on your device or iCloud Drive",
+    ],
+    gallery: [
+      { src: quaxelPixel, alt: "Quaxel pixel editor on iPad", caption: "Draw sprites with Apple Pencil" },
+      { src: quaxelSound, alt: "Quaxel sound editor on iPad", caption: "Make the soundtrack" },
+      { src: quaxelScene, alt: "Quaxel scene editor on iPad", caption: "Make the scene move on the beat" },
+    ],
+  },
   {
     id: "stackback",
     title: "Stackback",
