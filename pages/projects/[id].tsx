@@ -45,8 +45,7 @@ export default function ProjectPage({ id }: Props) {
           <p className={styles.heroTagline}>{project.tagline}</p>
           <div className={utilStyles.meta}>
             <span>
-              {project.year && `${project.year} · `}
-              {project.role}
+              {[project.year, project.role].filter(Boolean).join(" · ")}
             </span>
           </div>
           <div className={styles.actions}>

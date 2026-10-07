@@ -1,4 +1,8 @@
 import type { StaticImageData } from "next/image";
+import pixelRocketIcon from "../assets/projects/pixel-rocket/icon.webp";
+import pixelRocketClassic from "../assets/projects/pixel-rocket/classic.webp";
+import pixelRocketSnow from "../assets/projects/pixel-rocket/snow-day.webp";
+import pixelRocketGarage from "../assets/projects/pixel-rocket/garage.webp";
 import quaxelIcon from "../assets/projects/quaxel/icon.png";
 import quaxelCover from "../assets/projects/quaxel/cover.png";
 import quaxelPixel from "../assets/projects/quaxel/pixel.png";
@@ -42,7 +46,7 @@ export type Project = {
   title: string;
   tagline: string;
   year?: string;
-  role: string;
+  role?: string;
   stack: string[];
   repo?: string;
   homepage?: string;
@@ -62,6 +66,45 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "pixel-rocket",
+    title: "Pixel Rocket",
+    tagline: "Car soccer in an 8-bit arena. Boost, flip and score.",
+    year: "2026",
+    stack: ["Godot", "GDScript", "iPhone & iPad"],
+    homepage: "https://apps.apple.com/us/app/pixel-rocket/id6816010589",
+    homepageLabel: "View on the App Store",
+    icon: pixelRocketIcon,
+    cover: {
+      src: pixelRocketClassic,
+      alt: "Pixel Rocket App Store screenshot showing blue and orange cars playing soccer on a grass pitch",
+    },
+    coverFit: "contain",
+    intro: [
+      "An 8-bit car-soccer game for iPhone and iPad, released on the App Store in October 2026. Steer your car, build up boost, then jump and flip to send the ball toward the opposing goal.",
+      "Play 1v1 or 2v2 matches against bots. Classic puts a bouncing ball on grass; Snow Day swaps it for a puck and a slippery ice rink. The garage lets you choose a body, paint and boost trail.",
+      "The native game uses Godot and GDScript, with 320×180 pixel art and an original chiptune soundtrack. Matches support touch controls, controllers and keyboards.",
+    ],
+    highlights: [
+      "Grass-pitch Classic and ice-rink Snow Day modes",
+      "1v1 and 2v2 bot matches with three difficulty settings",
+      "Four car bodies, four paint colors and three boost trails",
+      "Overtime, demolitions and match statistics with an MVP",
+      "Touch, controller and keyboard support",
+    ],
+    gallery: [
+      {
+        src: pixelRocketSnow,
+        alt: "Pixel Rocket Snow Day screenshot with blue and orange cars chasing a puck across the ice",
+        caption: "Snow Day on ice, from the official App Store listing",
+      },
+      {
+        src: pixelRocketGarage,
+        alt: "Pixel Rocket garage screenshot showing a Dart car with paint and boost-trail options",
+        caption: "Choose your car, paint and trail in the garage",
+      },
+    ],
+  },
   {
     id: "quaxel",
     title: "Quaxel",
