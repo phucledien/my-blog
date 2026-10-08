@@ -59,6 +59,16 @@ export default function ProjectPage({ id }: Props) {
                 {project.homepageLabel ?? "Visit"} ↗
               </a>
             )}
+            {project.support && (
+              <a
+                className={styles.button}
+                href={project.support}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Support &amp; privacy ↗
+              </a>
+            )}
             {project.repo && (
               <a
                 className={styles.button}

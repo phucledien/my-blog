@@ -3,11 +3,11 @@ import pixelRocketIcon from "../assets/projects/pixel-rocket/icon.webp";
 import pixelRocketClassic from "../assets/projects/pixel-rocket/classic.webp";
 import pixelRocketSnow from "../assets/projects/pixel-rocket/snow-day.webp";
 import pixelRocketGarage from "../assets/projects/pixel-rocket/garage.webp";
-import quaxelIcon from "../assets/projects/quaxel/icon.png";
-import quaxelCover from "../assets/projects/quaxel/cover.png";
-import quaxelPixel from "../assets/projects/quaxel/pixel.png";
-import quaxelSound from "../assets/projects/quaxel/sound.png";
-import quaxelScene from "../assets/projects/quaxel/scene.png";
+import quaxelIcon from "../assets/projects/quaxel/icon.webp";
+import quaxelCover from "../assets/projects/quaxel/cover.webp";
+import quaxelPixel from "../assets/projects/quaxel/pixel.webp";
+import quaxelSound from "../assets/projects/quaxel/sound.webp";
+import quaxelScene from "../assets/projects/quaxel/scene.webp";
 
 import stackbackIcon from "../assets/projects/stackback/icon.png";
 
@@ -51,6 +51,7 @@ export type Project = {
   repo?: string;
   homepage?: string;
   homepageLabel?: string;
+  support?: string;
   // Small square artwork shown next to the title.
   icon?: StaticImageData;
   cover: ProjectImage;
@@ -107,32 +108,48 @@ export const projects: Project[] = [
   },
   {
     id: "quaxel",
-    title: "Quaxel",
-    tagline: "Draw it. Score it. Scene it.",
+    title: "Quaxel: Pixel Art & Music",
+    tagline: "Draw sprites, compose music and make your scene move to the beat.",
     year: "2026",
     role: "Creator",
     stack: ["Swift", "SwiftUI", "StoreKit", "iPhone & iPad"],
-    homepage: "/projects/quaxel/support",
-    homepageLabel: "Support & privacy",
+    homepage: "https://apps.apple.com/us/app/quaxel-pixel-art-music/id6819307403",
+    homepageLabel: "View on the App Store",
+    support: "/projects/quaxel/support",
     icon: quaxelIcon,
-    cover: { src: quaxelCover, alt: "Quaxel scene editor with a pixel beach, ducks, and layers" },
+    cover: {
+      src: quaxelCover,
+      alt: "Official Quaxel App Store artwork showing a pixel-art beach scene on iPad",
+    },
     coverFit: "contain",
     intro: [
-      "A tiny studio for pixel-art worlds that move to music. Draw a sprite, write the soundtrack, and build a living scene where the waves break on the beat, all in one app and one project file.",
-      "Made for iPhone and iPad, with Apple Pencil support. Your .quaxel documents stay in Files or iCloud Drive. No account, tracking, or ads.",
-      "Free includes the pixel, sound, and scene editors, animation, palettes, and the Beach recipe. Quaxel Pro adds video export, every scene recipe, unlimited sprites, and alternate app icons through a subscription or a lifetime purchase.",
+      "Released on the App Store in October 2026, Quaxel brings pixel drawing, music composition and scene animation together on iPhone and iPad. Create sprites, write a soundtrack and assemble a world that moves with the music, all in one project.",
+      "Draw with Apple Pencil, animate sprites in four directions, and organize colors into palettes. Build a song with a drum sequencer, piano roll and editable instruments, then layer gradients, particles and characters into a scene with properties tied to the beat.",
+      "Projects are .quaxel documents in Files or iCloud Drive. The free app includes all three editors and the Beach recipe. Quaxel Pro adds video export, more scene recipes, unlimited sprites and alternate icons through a subscription or a one-time purchase.",
     ],
     highlights: [
-      "Draw and animate sprites in four directions, with onion skin and color palettes",
-      "Write a soundtrack with a step sequencer, piano roll, and editable instruments",
-      "Build scenes from layers and animate properties in time with the song",
-      "Play full screen or export a 1080×1920 video with audio using Quaxel Pro",
-      "Keep your work in portable project files on your device or iCloud Drive",
+      "Apple Pencil drawing, palettes and frame-by-frame sprite animation",
+      "A drum step sequencer, piano roll and editable instruments",
+      "Layered scenes with properties animated in time with the soundtrack",
+      "1080×1920 MP4 export with audio using Quaxel Pro",
+      "Portable .quaxel project files on your device or iCloud Drive",
     ],
     gallery: [
-      { src: quaxelPixel, alt: "Quaxel pixel editor on iPad", caption: "Draw sprites with Apple Pencil" },
-      { src: quaxelSound, alt: "Quaxel sound editor on iPad", caption: "Make the soundtrack" },
-      { src: quaxelScene, alt: "Quaxel scene editor on iPad", caption: "Make the scene move on the beat" },
+      {
+        src: quaxelPixel,
+        alt: "Official Quaxel screenshot of the pixel editor with a duck sprite and color palettes",
+        caption: "Pixel drawing and palettes, from the official App Store listing",
+      },
+      {
+        src: quaxelSound,
+        alt: "Official Quaxel screenshot of the layered song, piano roll and instrument controls",
+        caption: "Compose the soundtrack with editable instruments",
+      },
+      {
+        src: quaxelScene,
+        alt: "Official Quaxel screenshot of beach layers, scene controls and beat-driven animation curves",
+        caption: "Build a scene that moves to the beat",
+      },
     ],
   },
   {
