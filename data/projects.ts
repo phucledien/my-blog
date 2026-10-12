@@ -68,6 +68,35 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: "lane-thief",
+    title: "Lane Thief",
+    tagline: "Steal the final blow. Your allies want it too.",
+    year: "2026",
+    role: "Creator",
+    stack: ["Godot", "GDScript", "iOS", "HTML5 prototype"],
+    support: "/projects/lane-thief/support",
+    cover: {
+      src: skillsTitle,
+      alt: "Lane Thief prototype title screen with Rook and the Iron Company in the lane",
+    },
+    coverFit: "contain",
+    intro: [
+      "A one-thumb timing game where your own allies compete with you for every kill. Play as Rook, watch the enemy’s heartbeat blink, and land the final blow before the Iron Company does.",
+      "Only the final blow pays. Bank gold, craft and upgrade equipment in the Armory, and face bosses as each run grows harder. The game is built in Godot for iOS, based on a playable HTML5 prototype.",
+      "The images below show the prototype that established the game’s art, animation, interface, and sound.",
+    ],
+    highlights: [
+      "Time a strike or charge an attack to claim the final blow",
+      "Four lanes, boss waves, and escalating Heat modifiers",
+      "Craft, upgrade, and equip items between runs",
+      "Adjust music, effects, flashes, screen shake, haptics, and handedness",
+    ],
+    gallery: [
+      { src: skillsPlay, alt: "Lane Thief prototype gameplay", caption: "Time the final blow before an ally claims it" },
+      { src: skillsArmory, alt: "Lane Thief prototype Armory", caption: "Craft, upgrade, and equip your loadout" },
+    ],
+  },
+  {
     id: "pixel-rocket",
     title: "Pixel Rocket",
     tagline: "Car soccer in an 8-bit arena. Boost, flip and score.",
