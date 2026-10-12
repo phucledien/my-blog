@@ -3,6 +3,13 @@ import pixelRocketIcon from "../assets/projects/pixel-rocket/icon.webp";
 import pixelRocketClassic from "../assets/projects/pixel-rocket/classic.webp";
 import pixelRocketSnow from "../assets/projects/pixel-rocket/snow-day.webp";
 import pixelRocketGarage from "../assets/projects/pixel-rocket/garage.webp";
+import rupikIcon from "../assets/projects/rupik/icon.png";
+import rupikCover from "../assets/projects/rupik/cover.jpg";
+import rupikOg from "../assets/projects/rupik/og.png";
+import rupikSolving from "../assets/projects/rupik/solving.jpg";
+import rupikDaily from "../assets/projects/rupik/daily.jpg";
+import rupikPyra from "../assets/projects/rupik/pyra.jpg";
+import rupikThemes from "../assets/projects/rupik/themes.jpg";
 import quaxelIcon from "../assets/projects/quaxel/icon.webp";
 import quaxelCover from "../assets/projects/quaxel/cover.webp";
 import quaxelPixel from "../assets/projects/quaxel/pixel.webp";
@@ -67,6 +74,40 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "rupik",
+    title: "Rupik",
+    tagline: "A pixel-art speedcube trainer with daily puzzles and guided lessons.",
+    year: "2026",
+    role: "Creator",
+    stack: ["Swift", "CoreGraphics", "StoreKit", "Game Center", "iPhone & iPad"],
+    support: "/projects/rupik/support",
+    icon: rupikIcon,
+    cover: {
+      src: rupikCover,
+      alt: "Rupik banner: the pixel-art cube trainer on iPhone, showing a 3×3 cube, a Pyraminx and the daily result",
+    },
+    coverFit: "contain",
+    ogImage: rupikOg,
+    intro: [
+      "Rupik is a pixel-art speedcube trainer for iPhone and iPad. Swipe a sticker to turn a layer, drag outside the cube to look around, and practice 2×2, 3×3, 4×4, 5×5 and the Pyraminx with a built-in timer and move counter.",
+      "Guided lessons teach a method step by step, and a new Daily puzzle every day has a par to beat and a Game Center leaderboard. Collect themes and alternate app icons in the Shop.",
+      "No accounts, no ads and no data collection. Progress stays on your device and syncs through your own iCloud. Rupik Pro adds the bigger puzzles, themes and icons.",
+    ],
+    highlights: [
+      "2×2 to 5×5 cubes and the Pyraminx, all playable by swiping",
+      "A daily puzzle with par and a Game Center leaderboard",
+      "Step-by-step guided lessons",
+      "Pixel-art themes and alternate app icons",
+      "No ads, no tracking, no data collected",
+    ],
+    gallery: [
+      { src: rupikSolving, alt: "Rupik practice screen with a scrambled 3×3 cube", caption: "Swipe a sticker to turn a layer" },
+      { src: rupikDaily, alt: "Rupik daily challenge result", caption: "A daily puzzle, par to beat" },
+      { src: rupikPyra, alt: "Rupik Pyraminx being solved", caption: "The Pyraminx" },
+      { src: rupikThemes, alt: "Rupik Shop with pixel themes", caption: "Pixel-art themes" },
+    ],
+  },
   {
     id: "lane-thief",
     title: "Lane Thief",
